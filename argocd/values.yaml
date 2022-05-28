@@ -8,9 +8,10 @@ argo-cd:
     enabled: false
 
   repoServer:
+    replicas: 1
     autoscaling:
-      enabled: true
-      minReplicas: 2
+      enabled: false
+      minReplicas: 1
       maxReplicas: 5
       targetCPUUtilizationPercentage: 85
       targetMemoryUtilizationPercentage: 85
@@ -128,8 +129,8 @@ argo-cd:
       serviceMonitor:
         enabled: true
     autoscaling:
-      enabled: false
-      minReplicas: 2
+      enabled: true
+      minReplicas: 1
       targetCPUUtilizationPercentage: 85
       targetMemoryUtilizationPercentage: 85
     resources:
@@ -172,7 +173,7 @@ argo-cd:
 
   redis-ha:
     enabled: true
-
+    replicas: 1
     # Temp disable
     exporter:
       enabled: false
@@ -181,6 +182,7 @@ argo-cd:
 #      tag: 6.2.6-alpine
 
     haproxy:
+      replicas: 1
       metrics:
         enabled: false
 

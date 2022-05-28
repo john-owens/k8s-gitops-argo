@@ -44,10 +44,11 @@ installArgoCd() {
 
   helm upgrade --install -n argocd argocd . -f values.yaml
 
-  checkDeployment argocd-application-controller argocd
+  # had to rename, it's appset now
+  checkDeployment argocd-applicationset-controller argocd
   checkDeployment argocd-repo-server argocd
   checkDeployment argocd-server argocd
-  checkDeployment argocd-redis argocd
+  checkDeployment argocd-redis-ha-haproxy argocd
 
   message "argoCD Helm Chart is Ready"
 
@@ -82,7 +83,13 @@ kubeConfig() {
   export KUBECONFIG="$REPO_ROOT/setup/kubeconfig"
 }
 
-kubeConfig
+#missing
+helm repo add ricoberger https://ricoberger.github.io/helm-charts
+helm repo update
+
+helm upgrade --install vault-secrets-operator ricoberger/vault-secrets-operator
+
+#kubeConfig
 installArgoCd
 initArgo
 

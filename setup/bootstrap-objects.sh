@@ -37,7 +37,7 @@ installManualObjects(){
 
 }
 
-export KUBECONFIG="$REPO_ROOT/setup/kubeconfig"
+#export KUBECONFIG="$REPO_ROOT/setup/kubeconfig"
 installManualObjects
 
 message "all done!"
