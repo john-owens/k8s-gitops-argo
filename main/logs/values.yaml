@@ -2,5 +2,5 @@
 
 
 repo:
-  url: https://github.com/rogerrum/k8s-gitops.git
+  url: https://github.com/john-owens/k8s-gitops-argo.git
   revision: main
